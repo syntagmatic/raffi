@@ -4,22 +4,33 @@
 <meta charset="utf-8">
 <title>Raphaël Playground in CoffeeScript</title>
 <link rel="stylesheet" href="style.css" type="text/css" media="screen">
-<script src="raphael.js"></script>
-<script type="text/javascript" src="coffee-script.js"></script>
 <script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="shell.js"></script>
+<script type="text/javascript" src="raphael.js"></script>
+<script type="text/javascript" src="locals.js"></script>
+<script type="text/javascript" src="coffee-script.js"></script>
 <script type="text/coffeescript" src="raffi.coffee"></script>
 <script type="text/coffeescript" src="buffers.coffee"></script>
-</head><body>
+</head>
+<body onload="init();init2()">
 <div id="canvas"></div>
-<div id="text"><textarea id="code">
-</textarea>
-<select id="buffers">
-  <option value="splatter">Splatter</option>
-  <option value="spiral">Spiral</option>
-  <option value="chart">Chart</option>
-</select>
-<button id="run" type="button">Graph it!</button>
-<button id="js" type="button">Compile</button>
-<button id="show" type="button">Show Code</button>
+<div id="text">
+<textarea id="code"></textarea>
+<div id="console">
+  <div id="output"></div>
+  <textarea id="input" class="input" wrap="off" onkeydown="inputKeydown(event)" rows="1"></textarea>
+</div>
+<div id="buttons">
+  <select id="buffers">
+    <option value="splatter">Splatter</option>
+    <option value="spiral">Spiral</option>
+    <option value="chart">Chart</option>
+  </select>
+  <button id="run" type="button">Graph it!</button>
+  <button id="clear" type="button">Clear</button>
+  <button id="js" type="button">Compile</button>
+  <button id="cons" type="button">Console</button>
+  <button id="show" type="button">Show Code</button>
+</div>
 </div>
 </body></html>

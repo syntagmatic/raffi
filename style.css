@@ -1,7 +1,8 @@
 body {
-  background: #000;
+  background: #fff;
   color: #333;
   font: 300 100.1% "Helvetica Neue", Helvetica, "Arial Unicode MS", Arial, sans-serif;
+  font-size:16px;
   margin: 0;
   padding: 0;
   text-align: center;
@@ -12,7 +13,6 @@ html,body {
   margin:0;
   padding:0;
   height:100%;
-  overflow:hidden;
 }
 h1 {
   font-weight: 400;
@@ -29,22 +29,48 @@ h1 {
   position:absolute;
 }
 #text {
-  position:fixed;
+  position:absolute;
   top:20px;
   right:20px;
-  width:590px;
+  width:1000px;
   text-align:right;
 }
-#code {
+#code, #console {
   height: 600px;
+  width: 480px;
   margin: 0 0 20px 0;
   padding: 8px;
-  width: 90%;
   background: #222;
   border: 1px solid #9D8553;
   color: #ffcf6f;
-  font-size:16px;
   display:none;
+  text-align:left;
+  position:relative;
+  font-size:16px;
+  float:right;
+}
+#input {
+  position:absolute;
+  bottom:8px;
+  width:474px;
+  height:70px;
+  font-size:16px;
+}
+#output {
+  max-height:514px;
+  overflow: auto;
+}
+.error {
+  color: #f32;
+  font-weight:bold;
+}
+.print {
+  color: #0d4;
+  font-weight:bold;
+}
+.normalOutput {
+  color: #efefef;
+  font-weight:bold;
 }
 p {
   color: #999;
@@ -68,16 +94,10 @@ a:hover {
   color: #fff;
   text-decoration: underline;
 }
-.code {
-  background: #222;
-  border: 1px solid #444;
-  padding: 8px;
-  color: #ffcf6f;
-  width: 90%;
-  float:left;
-  clear:left;
+#buttons {
+  clear:both;
 }
-#run, #show, #js {
+#buttons button {
   font-size:13px;
   font-weight:bold;
   border: 1px solid #888;
@@ -89,7 +109,7 @@ a:hover {
   margin-bottom:12px;
   outline: 0;
 }
-#run:hover, #show:hover, #js:hover {
+#buttons button:hover {
   background: #C9A459;
   color: #111;
 }

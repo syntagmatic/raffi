@@ -49,7 +49,7 @@ buffers =
         "stroke-width": 1
         "stroke-opacity": 0
             '''
-  chart:   '''
+  chart:    '''
     values = []
     dotsy = []
     clr = []
@@ -58,10 +58,10 @@ buffers =
       "stroke-width": 3
 
     for i in [0..12]
-      values[i] = randomPath(30, i)
+      values[i] = randomPath(30, i, dotsy)
       clr[i] = Raphael.getColor()
       c.attr({path: values[i], stroke: clr[i]})
-          '''
+            '''
 
 $(document).ready ->
   $("#show").toggle( ->
@@ -70,6 +70,11 @@ $(document).ready ->
   , ->
     $('#show').html "Show Code"
     $("#code").fadeOut()
+  )
+  $("#cons").toggle( ->
+    $("#console").fadeIn()
+  , ->
+    $("#console").fadeOut()
   )
   $("#buffers").change( ->
     buffer = $(this).val()
