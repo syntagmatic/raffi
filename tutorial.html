@@ -4,23 +4,45 @@
 <meta charset="utf-8">
 <title>Raphaël Playground in CoffeeScript</title>
 <link rel="stylesheet" href="style.css" type="text/css" media="screen">
-<script type="text/javascript" src="jquery.js"></script>
-<script type="text/javascript" src="shell.js"></script>
-<script type="text/javascript" src="raphael.js"></script>
-<script type="text/javascript" src="locals.js"></script>
-<script type="text/javascript" src="coffee-script.js"></script>
+<script src="raphael.js"></script>
+<script src="coffee-script.js"></script>
 <script type="text/coffeescript" src="raffi.coffee"></script>
-<script type="text/coffeescript" src="buffers.coffee"></script>
-</head>
-<body onload="init();init2()">
-<div id="canvas"></div>
+</head><body>
+<p>A CoffeeScript Compiler for Raphaël</p>
 <div id="text">
-<textarea id="code"></textarea>
-<div id="console">
-  <div id="output"></div>
-  <textarea id="input" class="input" wrap="off" onkeydown="inputKeydown(event)" rows="1"></textarea>
-</div>
-<div id="tutorial">
+<textarea id="code">
+n = 16
+
+cube = (x) -> pow(x,3)
+pos =-> 200 + cube (12 * (random()-0.5))
+size =-> cube 4*random()
+
+circles = set()
+for i in [1..n]
+  circles.push circle(pos(),pos(),size()).attr
+    fill: color = getColor()
+    opacity: 0.6
+    "stroke": "#333"
+    "stroke-width": 1
+    "stroke-opacity": 0
+
+axis.attr stroke: "#aaa"
+grid.attr stroke: "#e0e0e0"
+labels.attr stroke: "#666"
+
+circles.mouseover ->
+  this.attr({
+    "stroke-opacity": 1
+    opacity:0.85
+    cursor: "pointer"})
+circles.mouseout ->
+  this.animate({
+    "stroke-opacity": 0
+    opacity:0.6
+    cursor: "pointer"},140)
+</textarea>
+<button id="run" type="button">Graph it!</button>
+
 <p>Raphael Cheat Sheet<br/>
 <small><a href="http://raphaeljs.com/reference.html">Full Reference</a></small></p>
 <pre class="code">
@@ -45,7 +67,7 @@ st = set()
 st.push circle(x,y,r)
 </pre>
 
-<p>CoffeeScript Cheat Sheet<br/>
+<p style="padding-top:18px;clear:left;">CoffeeScript Cheat Sheet<br/>
 <small><a href="http://jashkenas.github.com/coffee-script/">Full Reference</a></small></p>
 <pre class="code">
 <span># assignment</span>
@@ -58,40 +80,30 @@ mult = (a,b) -> a*b
 list = [1,2,3,4,5]
 
 <span># objects</span>
-sh =
+shape =
   circ: (x,y) -> circle(x,y,15)
   sq: (x,y) -> rect(x,y,15,15)
 
 <span># new square at 75, 125</span>
-sh.sq(75,125)
+shape.sq(75,125)
 
 <span># array comprehensions</span>
-circles = (sh.circ(25*x,200) for x in [1..10])
+circles = (shape.circ(25*x,200) for x in [1..10])
 </pre>
 
 <p>Math</p>
 <pre class="code">
 sin pi/6 <span># 0.49999 ~ 1/2</span>
 acos 1/2 <span># 1.04719 ~ pi/3</span>
+
 random() <span># generate random number, 0-1</span>
+
 abs -5 <span># 5</span>
 pow(x,3) <span># x^3</span>
+
 floor 4.5 <span># 4</span>
 ceil 5.2 <span># 6</span>
 </pre>
-</div><!--tutorial-->
-<div id="buttons">
-  <select id="buffers">
-    <option value="splatter">Splatter</option>
-    <option value="spiral">Spiral</option>
-    <option value="chart">Chart</option>
-  </select>
-  <button id="run" type="button">Graph it!</button>
-  <button id="clear" type="button">Clear</button>
-  <button id="tut" type="button">Tutorial</button>
-  <button id="cons" type="button">Console</button>
-  <button id="show" type="button">Code</button>
-  <button id="js" type="button">Compile</button>
 </div>
-</div>
+<div id="canvas"></div>
 </body></html>

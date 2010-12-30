@@ -64,18 +64,26 @@ buffers =
             '''
 
 $(document).ready ->
-  $("#show").toggle( ->
-    $('#show').html "Hide Code"
-    $("#code").fadeIn()
-  , ->
-    $('#show').html "Show Code"
-    $("#code").fadeOut()
-  )
-  $("#cons").toggle( ->
-    $("#console").fadeIn()
-  , ->
-    $("#console").fadeOut()
-  )
+  flipper = (button, panel, showmsg, hidemsg) ->
+    $(button).toggle( ->
+      $(this).html hidemsg
+      $(panel).fadeIn()
+    , ->
+      $(this).html showmsg
+      $(panel).fadeOut()
+    )
+  flipper("#show",
+          "#code",
+          "Code",
+          "Hide Code")
+  flipper("#cons",
+          "#console",
+          "Console",
+          "Hide Console")
+  flipper("#tut",
+          "#tutorial",
+          "Tutorial",
+          "Hide Tutorial")
   $("#buffers").change( ->
     buffer = $(this).val()
     $("#code").html buffers[buffer]

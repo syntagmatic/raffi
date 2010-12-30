@@ -32,10 +32,10 @@ h1 {
   position:absolute;
   top:20px;
   right:20px;
-  width:1000px;
+  width:100%;
   text-align:right;
 }
-#code, #console {
+#code, #console, #tutorial {
   height: 600px;
   width: 480px;
   margin: 0 0 20px 0;
@@ -49,6 +49,19 @@ h1 {
   font-size:16px;
   float:right;
 }
+#tutorial {
+  max-height: 600px;
+  overflow: auto;
+}
+#tutorial p, #tutorial pre {
+  margin-left: 0px;
+}
+#tutorial p {
+  text-align:center;
+  border: 1px dashed #777;
+  margin-top:0px;
+  padding: 4px 0;
+}
 #input {
   position:absolute;
   bottom:8px;
@@ -57,7 +70,7 @@ h1 {
   font-size:16px;
 }
 #output {
-  max-height:514px;
+  max-height:515px;
   overflow: auto;
 }
 .error {
