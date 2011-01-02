@@ -1,8 +1,7 @@
 paper = Raphael("canvas", "100%", "100%")
 width = "100%"
 height = "100%"
-paper.clear()
-paper.rect(0, 0, "100%", "100%", 0).attr
+c = paper.rect(0, 0, "100%", "100%", 0).attr
   fill: "#efefef"
   stroke: "none"
 Raphael.getColor.reset()
@@ -107,14 +106,14 @@ Raphael.el.anim = (obj) ->
     this.animate(obj)
 
 randomPath = (length, j, dotsy) ->
-  path = ""
+  random_path = ""
   x = 10
   y = 0
   dotsy[j] = dotsy[j] || []
   for i in [0..length]
     dotsy[j][i] = round(random() * 200)
     if (i)
-      path += "C" + [x + 10, y, (x += 20) - 10, (y = 240 - dotsy[j][i]), x, y]
+      random_path += "C" + [x + 10, y, (x += 20) - 10, (y = 240 - dotsy[j][i]), x, y]
     else
-      path += "M" + [10, (y = 240 - dotsy[j][i])]
-  return path
+      random_path += "M" + [10, (y = 240 - dotsy[j][i])]
+  return random_path

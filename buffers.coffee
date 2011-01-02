@@ -62,6 +62,24 @@ buffers =
       clr[i] = Raphael.getColor()
       c.attr({path: values[i], stroke: clr[i]})
             '''
+  equation: '''
+    eq = (x) -> sin(x)  # equation
+    min = 0             # minimum
+    max = 4*pi          # maximum
+    inc = pi/24         # increment size
+    width = 600         # window width
+    zoom = 120          # amplitude multiplier
+    ox = 400            # x of origin
+    oy = 400            # y of origin
+
+    num = (max-min) / inc
+    points = []
+    point = (x,y) -> circle(x,y,1)
+    for i in [0..num]
+      x = (inc*i + min)
+      y = eq x
+      points.push point(x*(width/num/inc) + ox, y*zoom + oy)
+            '''
 
 $(document).ready ->
   flipper = (button, panel, showmsg, hidemsg) ->

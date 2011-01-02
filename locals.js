@@ -2,8 +2,7 @@ var init2 = function() {
   paper = Raphael("canvas", "100%", "100%");
   width = "100%";
   height = "100%";
-  paper.clear();
-  c = paper.rect(0, 0, width, height, 0).attr({
+  c = paper.rect(0, 0, "100%", "100%", 0).attr({
     fill: "#efefef",
     stroke: "none"
   });
@@ -50,6 +49,7 @@ var init2 = function() {
     return Raphael.getColor();
   };
   set = paper.set;
+  clear = paper.clear;
   createAxis = function(width, height, ticwidth) {
     var axis, grid, i, inc, labels, o, ox, tic, xmarks, xtics, ymarks, ytics, _ref, _ref2;
     if (width === "100%") {
@@ -129,19 +129,19 @@ var init2 = function() {
     }
   };
   randomPath = function(length, j, dotsy) {
-    var i, x, y;
-    path = "";
+    var i, random_path, x, y;
+    random_path = "";
     x = 10;
     y = 0;
     dotsy[j] = dotsy[j] || [];
     for (i = 0; (0 <= length ? i <= length : i >= length); (0 <= length ? i += 1 : i -= 1)) {
       dotsy[j][i] = round(random() * 200);
       if (i) {
-        path += "C" + [x + 10, y, (x += 20) - 10, (y = 240 - dotsy[j][i]), x, y];
+        random_path += "C" + [x + 10, y, (x += 20) - 10, (y = 240 - dotsy[j][i]), x, y];
       } else {
-        path += "M" + [10, (y = 240 - dotsy[j][i])];
+        random_path += "M" + [10, (y = 240 - dotsy[j][i])];
       }
     }
-    return path;
+    return random_path;
   };
 };
