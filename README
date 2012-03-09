@@ -3,3 +3,5 @@ Copyright 2010, Kai Chang
 Data visualization prototyping with RaphaelJS and CoffeeScript
 
 Example at: http://fleetinbeing.net/raffi/
+
+A more sophisticated version of Raffi is being developed here: https://github.com/syntagmatic/coffee-beans
